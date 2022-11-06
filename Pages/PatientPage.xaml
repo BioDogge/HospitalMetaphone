@@ -1,0 +1,81 @@
+﻿<Page x:Class="HospitalMetaphone.Pages.PatientPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HospitalMetaphone.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Список пациентов">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ListView Name="lViewPatient"
+                  Grid.Row="1"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"
+                               HorizontalAlignment="Center"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="{StaticResource ColorAccent}"
+                            BorderThickness="1"
+                            CornerRadius="5"
+                            Margin="5"
+                            Padding="1"
+                            Width="500">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="ФИО:"
+                                        Width="120"/>
+                                <TextBlock Text="{Binding PatientFioString}"
+                                           Style="{StaticResource BlockCommon}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Дата рождения:"
+                                       Width="120"/>
+                                <TextBlock Text="{Binding DateOfBirth}"
+                                           Style="{StaticResource BlockCommon}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Полных лет:"
+                                        Width="120"/>
+                                <TextBlock Text="{Binding Age}"
+                                           Style="{StaticResource BlockCommon}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Пол:"
+                                        Width="120"/>
+                                <TextBlock Text="{Binding GenderCode}"
+                                           Style="{StaticResource BlockCommon}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Телефон:"
+                                        Width="120"/>
+                                <TextBlock Text="{Binding Phone}"
+                                           Style="{StaticResource BlockCommon}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <Label Content="Поиск пациента (по фамилии)"/>
+            <TextBox x:Name="tBoxSearch"/>
+            <Button x:Name="btnSeatch"
+                    Content="Поиск"
+                    Click="btnSearch_Click"/>
+            <Button x:Name="btnClear"
+                    Content="Сброс"
+                    Click="btnClear_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>
