@@ -31,7 +31,8 @@ namespace HospitalMetaphone.Pages
         {
             string lastName = tBoxSearch.Text;
             var patientsMetaphone = App.Context.Database.SqlQuery<string>
-                ($"SELECT LastName FROM Patient WHERE LastName = '{lastName}' OR LastName = dbo.metaphone('{lastName}')").ToList();
+                ("SELECT LastName FROM Patient " +
+                $"WHERE dbo.metaphone(LastName) = dbo.metaphone('{lastName}')").ToList();
 
             if (patientsMetaphone.Any())
             {

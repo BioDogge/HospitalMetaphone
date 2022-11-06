@@ -27,11 +27,12 @@ namespace HospitalMetaphone.Pages
             lViewDoctor.ItemsSource = App.Context.Doctor.ToList();
         }
 
-        private void btnSeatch_Click(object sender, RoutedEventArgs e)
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
             string lastName = tBoxSearch.Text;
             var doctorsMetaphone = App.Context.Database.SqlQuery<string>
-                ($"SELECT LastName FROM Doctor WHERE LastName = '{lastName}' OR LastName = dbo.metaphone('{lastName}')").ToList();
+                ("SELECT LastName FROM Doctor " +
+                $"WHERE dbo.metaphone(LastName) = dbo.metaphone('{lastName}')").ToList();
 
             if (doctorsMetaphone.Any())
             {
