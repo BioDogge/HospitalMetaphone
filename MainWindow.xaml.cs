@@ -41,7 +41,7 @@ namespace HospitalMetaphone
         private void Timer_Tick(object sender, EventArgs e)
         {
             tBlockTime.Text = $"Дата: {DateTime.Now.ToShortDateString()}\t" +
-                $"Время: {DateTime.Now.ToShortTimeString()}";
+                $"\tВремя: {DateTime.Now.ToShortTimeString()}";
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
